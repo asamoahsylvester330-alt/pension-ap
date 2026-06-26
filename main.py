@@ -2,8 +2,8 @@ from fastapi import FastAPI, Form, Request, UploadFile, File, Query
 from fastapi.responses import FileResponse, Response, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from app.banks import build_search_map
-from app.engine import process_file, resolve_account
+from banks import build_search_map
+from engine import process_file, resolve_account
 from dotenv import load_dotenv
 import shutil
 import os
