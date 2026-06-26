@@ -8,7 +8,7 @@ from openpyxl.utils import get_column_letter
 from openpyxl.formatting.rule import CellIsRule
 from rapidfuzz import fuzz
 
-from app.banks import get_bank_code
+from banks import get_bank_code
 
 
 MATCH_THRESHOLD = 90
