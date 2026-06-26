@@ -1,7 +1,5 @@
 from fastapi import FastAPI, Form, Request, UploadFile, File, Query
 from fastapi.responses import FileResponse, Response, JSONResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 from banks import build_search_map
 from engine import process_file, resolve_account
 from dotenv import load_dotenv
@@ -46,8 +44,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
-templates = Jinja2Templates(directory="app/templates")
 
 UPLOAD_DIR = "uploads"
 OUTPUT_DIR = "outputs"
@@ -70,13 +66,8 @@ async def custom_rate_limit_handler(request, exc):
 
 @app.get("/")
 @app.head("/")
-async def home(request: Request):
-    return templates.TemplateResponse(
-        request=request,
-        name="index.html",
-        context={"request": request}
-    )
-
+async def home():
+    return {"status": "Pension API is running"}
 
 # ─── BULK UPLOAD ─────────────────────────
 
